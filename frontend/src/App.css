@@ -1,0 +1,40 @@
+body{
+  background: #88aae7;
+}
+
+
+.app-container {
+  margin-top: 190px;
+  padding: 20px;
+  background: 	#CADCFC;
+}
+
+.header-paper {
+  padding: 20px;
+  margin-bottom: 30px;
+  background: black;
+  
+}
+
+.converter-card {
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+ 
+}
+
+.MuiButton-root {
+  border-radius: 8px;
+  background-color: #00246B !important;
+  color: white !important;
+}
+
+.MuiTextField-root, .MuiFormControl-root {
+  border-radius: 8px;
+}
+
+.MuiPaper-root {
+  border-radius: 12px;
+}
+.MuiButton-root:hover {
+  background-color: #CADCFC!important;
+}
