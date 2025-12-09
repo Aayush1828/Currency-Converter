@@ -29,7 +29,7 @@ function App() {
     setLoading(true);
     setError('');
     try {
- const response = await axios.get(`http://localhost:5000/api/rates?base=${fromCurrency}`);
+      const response = await axios.get(`http://localhost:5000/api/rates?base=${fromCurrency}`);
       setRates(response.data.rates);
       setCurrencies(Object.keys(response.data.rates));
     } catch (err) {
@@ -43,17 +43,22 @@ function App() {
     fetchRates();
   }, [fetchRates]);
 
-  const convert = () => {
+  const convert = async () => {
     if (rates[toCurrency]) {
       const converted = amount * rates[toCurrency];
       setResult(converted);
       // Save to history
-      axios.post('http://localhost:5000/api/convert', {
-        from: fromCurrency,
-        to: toCurrency,
-        amount,
-        result: converted
-      });
+      try {
+        await axios.post('http://localhost:5000/api/convert', {
+          from: fromCurrency,
+          to: toCurrency,
+          amount,
+          result: converted
+        });
+      } catch (err) {
+        // Silently fail - conversion still works even if history save fails
+        console.error('Failed to save conversion history:', err);
+      }
     }
   };
 
