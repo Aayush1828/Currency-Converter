@@ -29,7 +29,7 @@ function App() {
     setLoading(true);
     setError('');
     try {
-      const response = await axios.get(`http://localhost:5000/api/rates?base=${fromCurrency}`);
+     const response = await axios.get(`https://currency-converter-9kxq.onrender.com/api/rates?base=${fromCurrency}`);
       setRates(response.data.rates);
       setCurrencies(Object.keys(response.data.rates));
     } catch (err) {
@@ -48,7 +48,7 @@ function App() {
       const converted = amount * rates[toCurrency];
       setResult(converted);
       // Save to history
-      axios.post('http://localhost:5000/api/convert', {
+     axios.post('https://currency-converter-9kxq.onrender.com/api/convert', {
         from: fromCurrency,
         to: toCurrency,
         amount,
